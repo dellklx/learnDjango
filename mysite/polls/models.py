@@ -8,11 +8,11 @@ from django.utils.encoding import python_2_unicode_compatible
 @python_2_unicode_compatible
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
-    pub_data = models.DateTimeField('data published')
+    pub_date = models.DateTimeField('date published')
     def __str__(self):
         return self.question_text
     def was_published_recently(self):
-        return timezone.now() >= self.pub_data >= timezone.now() - datetime.timedelta(days=1)
+        return timezone.now() >= self.pub_date >= timezone.now() - datetime.timedelta(days=1)
 
 @python_2_unicode_compatible
 class Choice(models.Model):
